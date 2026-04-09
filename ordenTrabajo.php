@@ -11,6 +11,20 @@
     </head>
 
 <body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="vehiculos.php"> Vehiculos </a></li> 
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="clientes.php"> Clientes </a></li> 
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="ordenTrabajo.php"> Ordenes de Trabajo </a></li> 
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="repuestos.php"> Repuestos </a></li> 
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="servicios.php"> Servicios </a></li> 
+
+            </ul>
+        </nav>
+    </header>
+
     <div class="container-fluid row">
    
     <form class="col-4 offset-4 p-3">
@@ -87,9 +101,6 @@
   </tbody>
 </table></div> 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>
