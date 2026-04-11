@@ -22,16 +22,6 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="vehiculos.php"> Vehiculos </a></li> 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="clientes.php"> Clientes </a></li> 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="ordenTrabajo.php"> Ordenes de Trabajo </a></li> 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="repuestos.php"> Repuestos </a></li> 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="servicios.php"> Servicios </a></li> 
-
-            </ul>
-        </nav>
     </header>
 
     <div class="container-fluid row">
@@ -39,17 +29,22 @@
     <form class="col-4 offset-4 p-3">
         <h3 class="text-center text-secondary">Registrar Orden de Trabajo</h3>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Numero de Documento</label>
-            <input type="text" class="form-control" name="numDocumento">
-            <button type="button" class="btn btn-primary">Buscar</button>
+            <label class="form-label">Numero de Documento</label>
+            <input type="text" class="form-control" name="numDocumento" id="numDocumento">
+            <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+
+            <input type="hidden" id="id_cliente" name="id_cliente">
+
+
+
         </div>
+
+    </form>
+    <form class="col-4 offset-4 p-3">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
             <select class="form-select" id="vehiculo_input">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="">Selecciona...</option>
             </select>  
         </div>
         <div class="mb-3">
@@ -137,6 +132,9 @@
 </table>
 </div> 
 
+
+    <script src="buscarVehiculosPorCliente.js"></script>
+    <script src="buscarCliente.js"></script>.
 </body>
 
 </html>
