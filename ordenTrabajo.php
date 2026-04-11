@@ -17,12 +17,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+<<<<<<< HEAD
+    <link rel="stylesheet" href="https://unpkg.com/dselect@latest/dist/css/dselect.css">
+    <script src="https://kit.fontawesome.com/b42da86e0b.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dselect@latest/dist/js/dselect.js"></script>
+    <?php
+    include "conexion.php";
+    include "verTabla.php";
+
+    $obj = new tabla($conn);
+    $result = $obj->listaOrdenes();
+    ?>
+</head>
+=======
     </head>
+>>>>>>> b40d47756126850e30502d870662e7b11b08c171
 
 <body>
-
-    <header>
-    </header>
 
     <div class="container-fluid row">
    
@@ -112,25 +123,11 @@
   </thead>
   <tbody>
     <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-       <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-       <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-       <td>Mark</td>
-      <td>Otto</td>
-       <td>
-      <a href="" class="btn btn-small btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-        <a href=""class="btn btn-small btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-       </td>
     </tr>
   </tbody>
 </table>
 </div> 
+>>>>>>> b40d47756126850e30502d870662e7b11b08c171
 
 
     <script src="buscarVehiculosPorCliente.js"></script>
@@ -138,4 +135,3 @@
 </body>
 
 </html>
-
