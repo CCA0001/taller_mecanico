@@ -1,10 +1,10 @@
 <?php
-    // Tus consultas a la API (mantenlas arriba)
-    $jsonRepuestos = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresRepuestos.php");
+/*    $jsonRepuestos = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresRepuestos.php");
     $repuestos = json_decode($jsonRepuestos, true);
 
     $jsonServicios = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresServicios.php");
     $servicios = json_decode($jsonServicios, true);
+    */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,14 +40,63 @@
         </nav>
     </header>
 
-    <div class="container-fluid row">
-        <form class="col-4 p-3">
+     <div class="container-fluid row">
+
+        <form class="col-4 offset-4 p-3">
             <h3 class="text-center text-secondary">Registrar Orden de Trabajo</h3>
             <div class="mb-3">
-                <label class="form-label">Numero de Documento</label>
+                <label for="exampleInputEmail1" class="form-label">Numero de Documento</label>
                 <input type="text" class="form-control" name="numDocumento">
             </div>
-            <button type="submit" class="btn btn-primary" name="btnregistrar" value="ok">Registrar</button>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
+                <select class="form-select" id="vehiculo_input">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Servicio</label>
+                <select class="form-select" id="servicio_input">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="check">¿El servicio requiere de repuesto?</label>
+                <input type="checkbox" id="check" name="repuesto_hay" value="yes">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre del repuesto</label>
+                <select name="select_box" class="form-select" id="select_box">
+                    <option value=""> Selecciona... </option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Trabajador responsable</label>
+                <input type="text" class="form-control" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Valor total</label>
+                <input type="text" class="form-control" name="valor">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fecha y hora de inicio</label>
+                <input type="datetime-local" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fecha y hora de finalizacion</label>
+                <input type="datetime-local" class="form-control">
+            </div>
+            <button type="submit" id="btnRegistrarOrdenTrabajo" class="btn btn-primary" name="btnregistrar"
+                value="ok">Registrar</button>
         </form>
 
         <div class="col-8 p-4">
@@ -79,12 +128,12 @@
                             <td><?= $fila->Tipo ?></td>
                             <td><?= $fila->Nombre_servicio ?></td>
                             <td>
-                                <a href="CRUD/eliminar_orden.php?id=<?= $fila->id_OrdenTrabajo ?>" 
-                                   onclick="return confirm('¿Segura de eliminar?')" 
-                                   class="btn btn-warning btn-sm">
-                                   <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="CRUD/eliminar_orden.php?id=<?= $fila->id_OrdenTrabajo ?>"
+                                    onclick="return confirm('¿Esta seguro de eliminar esta fila?')"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-trash-can"></i>
 
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                                    <a href="#" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -93,4 +142,5 @@
         </div>
     </div>
 </body>
+
 </html>
