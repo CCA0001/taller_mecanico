@@ -3,10 +3,9 @@ document.getElementById("btnBuscar").addEventListener("click", function() {
 
     let cedula = document.getElementById("numDocumento").value;
 
-    fetch("api/comprobarCliente.php?numDocumento=" + cedula)
+    fetch("http://localhost/TallerMecanica/api/comprobarCliente.php?numDocumento=" + cedula)
     .then(response => response.json())
     .then(data => {
-
 
         if (data && !data.error) {
             document.getElementById("id_cliente").value = data.id_cliente;

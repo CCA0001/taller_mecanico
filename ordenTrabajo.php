@@ -15,11 +15,9 @@
     <title>Orden de Trabajo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b42da86e0b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dselect@latest/dist/css/dselect.css">
-    <script src="https://unpkg.com/dselect@latest/dist/js/dselect.js"></script>
 
     <?php
-    include "conexion.php";
+    include "conexion/conexion.php";
     include "verTabla.php";
 
     $obj = new tabla($conn);
@@ -31,7 +29,7 @@
 
     <div class="container-fluid row">
    
-    <form class="col-4 offset-4 p-3">
+    <form class="col-4 offset-4 p-3" name="form">
         <h3 class="text-center text-secondary">Registrar Orden de Trabajo</h3>
         <div class="mb-3">
             <label class="form-label">Numero de Documento</label>
@@ -41,11 +39,8 @@
             <input type="hidden" id="id_cliente" name="id_cliente">
 
 
-
         </div>
 
-    </form>
-    <form class="col-4 offset-4 p-3">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
             <select class="form-select" id="vehiculo_input">
@@ -69,7 +64,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nombre del repuesto</label>
-            <select name="dropdown_repuesto" class="form-select">
+            <select name="dropdown_repuesto" class="form-select" id="repuesto_input">
                 <option value=""> Selecciona... </option>
                 <?php foreach($repuestos as $rep): ?>
                     <option value="<?= $rep['id_Repuesto'] ?>">
@@ -80,21 +75,30 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Trabajador responsable</label>
-            <input type="text" class="form-control" name="nombre">
+            <input type="text" class="form-control" name="nombre" id="trabajador_input">
         </div>
          <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Valor total</label>
-            <input type="text" class="form-control" name="valor">
+            <input type="text" class="form-control" name="valor" id="valor_input">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Fecha y hora de inicio</label>
-            <input type="datetime-local" class="form-control">
+            <input type="datetime-local" class="form-control" id="fechaInicio_input">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Fecha y hora de finalizacion</label>
-            <input type="datetime-local" class="form-control">
+            <input type="datetime-local" class="form-control" id="fechaFin_input">
         </div>
-        <button type="submit" id="btnRegistrarOrdenTrabajo" class="btn btn-primary"name="btnregistrar" value="ok">Registrar</button>
+         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Estado</label>
+            <select name="dropdown_repuesto" class="form-select" id="estado_input">
+                <option value=""> Selecciona... </option>
+                <option value="En Proceso"> En Proceso </option>
+                <option value="Por Hacer"> Por Hacer </option>
+                <option value="Completado"> Completado </option>
+            </select>            
+        </div>
+        <button type="button" id="btnRegistrarOrdenTrabajo" class="btn btn-primary"name="btnregistrar" value="ok">Registrar</button>
     </form>
         <div class="col-12 p-4">
             <table class="table">
@@ -143,7 +147,8 @@
 
 
 
-    <script src="buscarVehiculosPorCliente.js"></script>
-    <script src="buscarCliente.js"></script>.
+    <script src="backend/buscarVehiculosPorCliente.js"></script>
+    <script src="backend/buscarCliente.js"></script>.
+    <script src="backend/RecogerDatosOrden.js"></script>
 </body>
 </html>
