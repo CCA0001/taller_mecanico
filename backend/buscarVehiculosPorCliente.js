@@ -1,6 +1,6 @@
 function cargarVehiculos(id_cliente) {
 
-    fetch("http://localhost/TallerMecanica/api/obtenerVehiculosCliente.php?id_cliente=" + id_cliente)
+    fetch("/api/obtenerVehiculosCliente.php?id_cliente=" + id_cliente)
     .then(res => res.json())
     .then(data => {
 

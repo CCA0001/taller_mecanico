@@ -50,7 +50,7 @@ let errores = [];
     }
 
 
-    fetch("http://localhost/TallerMecanica/CRUD/insertar_orden.php",{
+    fetch("/CRUD/insertar_orden.php",{
         method: "POST", 
         headers: {
             "Content-Type": "application/json"

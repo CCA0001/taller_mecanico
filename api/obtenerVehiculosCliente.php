@@ -1,6 +1,6 @@
 <?php
     header("Content-Type: application/json");
-    include(__DIR__ . "../conexion/conexion.php");
+    include(__DIR__ . "/../conexion/conexion.php");
 
     $id_cliente = $_GET['id_cliente'] ?? null;
 

@@ -1,6 +1,6 @@
 <?php
     header("Content-Type: application/json");
-    include(__DIR__. "../conexion/conexion.php");
+    include(__DIR__. "/../conexion/conexion.php");
 
     $data = json_decode(file_get_contents("php://input"), true);
 
