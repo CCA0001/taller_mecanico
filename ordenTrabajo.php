@@ -1,16 +1,16 @@
 <?php
-    // Tus consultas a la API (mantenlas arriba)
-    $jsonRepuestos = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresRepuestos.php");
+ $jsonRepuestos = file_get_contents("http://localhost/tecnomecanica/api/obtenerNombresRepuestos.php");
     $repuestos = json_decode($jsonRepuestos, true);
 
-    $jsonServicios = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresServicios.php");
+    $jsonServicios = file_get_contents("http://localhost/tecnomecanica/api/obtenerNombresServicios.php");
     $servicios = json_decode($jsonServicios, true);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orden de Trabajo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -152,12 +152,16 @@
                             <td><?= $fila->Tipo ?></td>
                             <td><?= $fila->Nombre_servicio ?></td>
                             <td>
-                                <a href="CRUD/eliminar_orden.php?id=<?= $fila->id_OrdenTrabajo ?>" 
-                                   onclick="return confirm('¿Segura de eliminar?')" 
-                                   class="btn btn-warning btn-sm">
-                                   <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="ventanaEditar.php?id=<?= $fila->id_OrdenTrabajo ?>"
+                                    class="btn btn-warning btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
 
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                                <a href="crud/eliminar_orden.php?id=<?= $fila->id_OrdenTrabajo ?>"
+                                    onclick="return confirm('¿Está seguro de eliminar esta fila?')"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -165,14 +169,12 @@
             </table>
         </div>
     </div>
-</div> 
-
-
-
+    </div>
 
     <script src="backend/buscarVehiculosPorCliente.js"></script>
     <script src="backend/buscarCliente.js"></script>.
     <script src="backend/RecogerDatosOrden.js"></script>
     <script src="nodo.js"></script>
 </body>
+
 </html>
