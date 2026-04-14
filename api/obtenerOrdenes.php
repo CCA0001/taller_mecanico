@@ -1,7 +1,7 @@
 <?php
     header("Content-Type: application/json");
-    include("../conexion/conexion.php");
-    include("../verTabla.php");
+    include(__DIR__ . "../conexion/conexion.php");
+    include(__DIR__ . "../verTabla.php");
 
     $obj = new tabla($conn);
     $stmt = $obj->listaOrdenes();

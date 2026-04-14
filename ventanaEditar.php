@@ -1,5 +1,5 @@
 <?php
-    include "conexion/conexion.php";
+    include __DIR__. "conexion/conexion.php";
     require_once "CRUD/modelo.php"; 
     $obj = new OrdenTrabajo($conn);
     $id = isset($_GET["id"]) ? $_GET["id"] : die("Error: ID no encontrado");
