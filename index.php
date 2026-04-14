@@ -66,11 +66,6 @@
             <label for="servicio_input" class="form-label">Servicio</label>
             <select class="form-select" id="servicio_input">
                 <option value=""> Selecciona... </option>
-                <?php foreach($servicios as $ser): ?>
-                    <option value="<?= $ser['id_servicio'] ?>">
-                        <?= $ser['Nombre_servicio'] ?>
-                </option>
-                <?php endforeach; ?>
             </select>        
         </div>
         <div class="mb-3">
@@ -81,11 +76,6 @@
             <label for="repuesto_input" class="form-label">Nombre del repuesto</label>
             <select name="dropdown_repuesto" class="form-select" id="repuesto_input">
                 <option value=""> Selecciona... </option>
-                <?php foreach($repuestos as $rep): ?>
-                    <option value="<?= $rep['id_Repuesto'] ?>">
-                        <?= $rep['Nombre_Repuesto'] ?>
-                </option>
-                <?php endforeach; ?>
             </select>     
         </div>
         <div class="mb-3">
