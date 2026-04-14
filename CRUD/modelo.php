@@ -2,8 +2,7 @@
 class OrdenTrabajo {
     private $conn;
 
-    public function __construct() {
-        include __DIR__ . "/../conexion/conexion.php"; 
+    public function __construct($conn) {
         $this->conn = $conn;
     }
 
@@ -11,8 +10,8 @@ class OrdenTrabajo {
         $sql = "SELECT o.*, c.Cedula as CedulaCliente 
                 FROM Orden_Trabajo o
                 INNER JOIN Cliente c ON o.id_cliente = c.id_cliente
-                WHERE o.id_OrdenTrabajo = $id";
-        $res = sqlsrv_query($this->conn, $sql);
+                WHERE o.id_OrdenTrabajo = ?";
+        $res = sqlsrv_query($this->conn, $sql, [$id]);
         return sqlsrv_fetch_object($res);
     }
 

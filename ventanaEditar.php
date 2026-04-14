@@ -1,8 +1,9 @@
 <?php
-require_once "CRUD/modelo.php"; 
-$obj = new OrdenTrabajo();
-$id = isset($_GET["id"]) ? $_GET["id"] : die("Error: ID no encontrado");
-$datos = $obj->buscarPorId($id);
+    include "conexion/conexion.php";
+    require_once "CRUD/modelo.php"; 
+    $obj = new OrdenTrabajo($conn);
+    $id = isset($_GET["id"]) ? $_GET["id"] : die("Error: ID no encontrado");
+    $datos = $obj->buscarPorId($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

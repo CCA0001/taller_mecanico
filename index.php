@@ -1,9 +1,10 @@
 <?php
- $jsonRepuestos = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresRepuestos.php");
-    $repuestos = json_decode($jsonRepuestos, true);
+// ✅ BIEN
+    include 'api/obtenerNombresRepuestos.php'; 
+    $repuestos = json_decode($vehiculos, true);
 
-    $jsonServicios = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresServicios.php");
-    $servicios = json_decode($jsonServicios, true);
+    include 'api/obtenerNombresServicios.php';    
+    $servicios = json_decode($servicios, true);
     
 ?>
 <!DOCTYPE html>
@@ -65,13 +66,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
+            <label for="vehiculo_input" class="form-label">Vehiculo</label>
             <select class="form-select" id="vehiculo_input">
                 <option value="">Selecciona...</option>
             </select>  
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Servicio</label>
+            <label for="servicio_input" class="form-label">Servicio</label>
             <select class="form-select" id="servicio_input">
                 <option value=""> Selecciona... </option>
                 <?php foreach($servicios as $ser): ?>
@@ -86,7 +87,7 @@
             <input type="checkbox" id="check" name="repuesto_hay" value="yes">
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nombre del repuesto</label>
+            <label for="repuesto_input" class="form-label">Nombre del repuesto</label>
             <select name="dropdown_repuesto" class="form-select" id="repuesto_input">
                 <option value=""> Selecciona... </option>
                 <?php foreach($repuestos as $rep): ?>
@@ -97,23 +98,23 @@
             </select>     
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Trabajador responsable</label>
+            <label for="trabajador_input" class="form-label">Trabajador responsable</label>
             <input type="text" class="form-control" name="nombre" id="trabajador_input">
         </div>
          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Valor total</label>
+            <label for="valor_input" class="form-label">Valor total</label>
             <input type="text" class="form-control" name="valor" id="valor_input">
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Fecha y hora de inicio</label>
+            <label for="fechaInicio_input" class="form-label">Fecha y hora de inicio</label>
             <input type="datetime-local" class="form-control" id="fechaInicio_input">
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Fecha y hora de finalizacion</label>
+            <label for="fechaFin_input" class="form-label">Fecha y hora de finalizacion</label>
             <input type="datetime-local" class="form-control" id="fechaFin_input">
         </div>
          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Estado</label>
+            <label for="estado_input" class="form-label">Estado</label>
             <select name="dropdown_repuesto" class="form-select" id="estado_input">
                 <option value=""> Selecciona... </option>
                 <option value="En Proceso"> En Proceso </option>

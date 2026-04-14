@@ -4,8 +4,8 @@
     if (!empty($_GET["id"])) {
         $id_recibido=$_GET["id"];
 
-        $sql="DELETE FROM [dbo].[Orden_Trabajo] WHERE id_OrdenTrabajo=$id_recibido";
-        $query = sqlsrv_query($conn, $sql);
+        $sql="DELETE FROM [dbo].[Orden_Trabajo] WHERE id_OrdenTrabajo=?";
+        $query = sqlsrv_query($conn, $sql, [$id_recibido]);
 
         if ($query) {
         header("location:../ordenTrabajo.php");

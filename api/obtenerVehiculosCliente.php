@@ -14,6 +14,7 @@
 
     $stmt = sqlsrv_query($conn, $sql, $params);
 
+    $vehiculos = [];
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         $vehiculos[] = $row;
     }
