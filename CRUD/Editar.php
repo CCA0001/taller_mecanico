@@ -1,4 +1,5 @@
 <?php
+include(__DIR__. "/../conexion/conexion.php");
 require_once "modelo.php"; 
 
 if (!empty($_POST["btnregistrar"])) {
@@ -13,7 +14,7 @@ if (!empty($_POST["btnregistrar"])) {
     $est = $_POST["estado"];
     $id_rep = ($rep_bit == 1 && !empty($_POST["select_box"])) ? $_POST["select_box"] : "NULL";
 
-    $obj = new OrdenTrabajo();
+    $obj = new OrdenTrabajo($conn);
     $resultado = $obj->editar($id, $val, $hi, $hf, $nom, $rep_bit, $id_rep, $id_veh, $id_ser, $est);
 
     if ($resultado) {
