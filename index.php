@@ -1,9 +1,3 @@
-<?php
-
-    include 'api/obtenerNombresServicios.php';    
-    $servicios = json_decode($servicios, true);
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
 
