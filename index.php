@@ -1,7 +1,4 @@
 <?php
-// ✅ BIEN
-    include 'api/obtenerNombresRepuestos.php'; 
-    $repuestos = json_decode($vehiculos, true);
 
     include 'api/obtenerNombresServicios.php';    
     $servicios = json_decode($servicios, true);
@@ -173,6 +170,7 @@
     </div>
 
     <script src="backend/buscarVehiculosPorCliente.js"></script>
+    <script src="backend/buscarRepuestos.js"></script>.
     <script src="backend/buscarCliente.js"></script>.
     <script src="backend/RecogerDatosOrden.js"></script>
     <script src="listaCircular.js"></script>
