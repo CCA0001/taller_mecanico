@@ -1,6 +1,6 @@
 <?php
     header("Content-Type: application/json");
-    include("../conexion.php");
+    include("../conexion/conexion.php");
 
     $cedula = $_GET['numDocumento'] ?? null;
 

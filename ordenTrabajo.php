@@ -15,15 +15,13 @@
     <title>Orden de Trabajo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b42da86e0b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dselect@latest/dist/css/dselect.css">
-    <script src="https://unpkg.com/dselect@latest/dist/js/dselect.js"></script>
 
     <?php
-    include "conexion.php";
-    include "verTabla.php";
+        include "conexion/conexion.php";
+        include "verTabla.php";
 
-    $obj = new tabla($conn);
-    $result = $obj->listaOrdenes();
+        $obj = new tabla($conn);
+        $result = $obj->listaOrdenes();
     ?>
 </head>
 
@@ -31,72 +29,100 @@
 
     <div class="container-fluid row">
 
-        <form class="col-4 offset-4 p-3 ">
-            <h3 class="text-center text-secondary">Registrar Orden de Trabajo</h3>
-            <div class="mb-3">
-                <label class="form-label">Numero de Documento</label>
-                <input type="text" class="form-control" name="numDocumento" id="numDocumento">
-                <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
+        <h2 class="text-center text-secondary">Órdenes Activas</h2>
 
-                <input type="hidden" id="id_cliente" name="id_cliente">
+        <div class="text-center mb-3">
+            <button onclick="anterior()" class="btn btn-secondary">Anterior</button>
+            <button onclick="siguiente()" class="btn btn-primary">Siguiente</button>
+        </div>
+
+        <table class="table table-bordered text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Estado</th>
+                    <th>Valor</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Trabajador</th>
+                </tr>
+            </thead>
+            <tbody id="tablaOrden"></tbody>
+        </table>
 
 
+   
+    <form class="col-4 offset-4 p-3" name="form">
+        <h3 class="text-center text-secondary">Registrar Orden de Trabajo</h3>
+        <div class="mb-3">
+            <label class="form-label">Numero de Documento</label>
+            <input type="text" class="form-control" name="numDocumento" id="numDocumento">
+            <button type="button" id="btnBuscar" class="btn btn-primary">Buscar</button>
 
-            </div>
+            <input type="hidden" id="id_cliente" name="id_cliente">
 
-        </form>
-        <form class="col-4 offset-4 p-3 shadow bg-white rounded">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
-                <select class="form-select" id="vehiculo_input">
-                    <option value="">Selecciona...</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Servicio</label>
-                <select class="form-select" id="servicio_input">
-                    <option value=""> Selecciona... </option>
-                    <?php foreach ($servicios as $ser): ?>
-                        <option value="<?= $ser['id_servicio'] ?>">
-                            <?= $ser['Nombre_servicio'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="check">¿El servicio requiere de repuesto?</label>
-                <input type="checkbox" id="check" name="repuesto_hay" value="yes">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre del repuesto</label>
-                <select name="dropdown_repuesto" class="form-select">
-                    <option value=""> Selecciona... </option>
-                    <?php foreach ($repuestos as $rep): ?>
-                        <option value="<?= $rep['id_Repuesto'] ?>">
-                            <?= $rep['Nombre_Repuesto'] ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Trabajador responsable</label>
-                <input type="text" class="form-control" name="nombre">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Valor total</label>
-                <input type="text" class="form-control" name="valor">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Fecha y hora de inicio</label>
-                <input type="datetime-local" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Fecha y hora de finalizacion</label>
-                <input type="datetime-local" class="form-control">
-            </div>
-            <button type="submit" id="btnRegistrarOrdenTrabajo" class="btn btn-primary" name="btnregistrar"
-                value="ok">Registrar</button>
-        </form>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Vehiculo</label>
+            <select class="form-select" id="vehiculo_input">
+                <option value="">Selecciona...</option>
+            </select>  
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Servicio</label>
+            <select class="form-select" id="servicio_input">
+                <option value=""> Selecciona... </option>
+                <?php foreach($servicios as $ser): ?>
+                    <option value="<?= $ser['id_servicio'] ?>">
+                        <?= $ser['Nombre_servicio'] ?>
+                </option>
+                <?php endforeach; ?>
+            </select>        
+        </div>
+        <div class="mb-3">
+            <label for="check">¿El servicio requiere de repuesto?</label>
+            <input type="checkbox" id="check" name="repuesto_hay" value="yes">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre del repuesto</label>
+            <select name="dropdown_repuesto" class="form-select" id="repuesto_input">
+                <option value=""> Selecciona... </option>
+                <?php foreach($repuestos as $rep): ?>
+                    <option value="<?= $rep['id_Repuesto'] ?>">
+                        <?= $rep['Nombre_Repuesto'] ?>
+                </option>
+                <?php endforeach; ?>
+            </select>     
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Trabajador responsable</label>
+            <input type="text" class="form-control" name="nombre" id="trabajador_input">
+        </div>
+         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Valor total</label>
+            <input type="text" class="form-control" name="valor" id="valor_input">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fecha y hora de inicio</label>
+            <input type="datetime-local" class="form-control" id="fechaInicio_input">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fecha y hora de finalizacion</label>
+            <input type="datetime-local" class="form-control" id="fechaFin_input">
+        </div>
+         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Estado</label>
+            <select name="dropdown_repuesto" class="form-select" id="estado_input">
+                <option value=""> Selecciona... </option>
+                <option value="En Proceso"> En Proceso </option>
+                <option value="Por Hacer"> Por Hacer </option>
+                <option value="Completado"> Completado </option>
+            </select>            
+        </div>
+        <button type="button" id="btnRegistrarOrdenTrabajo" class="btn btn-primary"name="btnregistrar" value="ok">Registrar</button>
+    </form>
         <div class="col-12 p-4">
             <table class="table">
                 <thead class="table-primary">
@@ -145,8 +171,10 @@
     </div>
     </div>
 
- <script src="buscarVehiculosPorCliente.js"></script>
-    <script src="buscarCliente.js"></script>
+    <script src="backend/buscarVehiculosPorCliente.js"></script>
+    <script src="backend/buscarCliente.js"></script>.
+    <script src="backend/RecogerDatosOrden.js"></script>
+    <script src="nodo.js"></script>
 </body>
 
 </html>

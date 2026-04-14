@@ -1,7 +1,7 @@
 <?php
     header("Content-Type: application/json");
 
-    include("../conexion.php");
+    include("../conexion/conexion.php");
 
     $sql = "SELECT id_Repuesto, Nombre_Repuesto FROM Repuesto";
     $stmt = sqlsrv_query($conn, $sql);
