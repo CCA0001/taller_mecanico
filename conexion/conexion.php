@@ -1,10 +1,10 @@
 <?php
 
-    $serverName = "tallermecanicodata.database.windows.net"; // o IP del servidor
+    $serverName = getenv("DB_SERVER"); // o IP del servidor
     $connectionOptions = [
-        "Database" => "Taller_Tecnomecanica",
-        "Uid" => "admin_taller4",
-        "PWD" => "Hola12345"
+        "Database" => getenv("DB_NAME"),
+        "Uid" => getenv("DB_USER"),
+        "PWD" => getenv("DB_PASSWORD")
     ];
 
     $conn = sqlsrv_connect($serverName, $connectionOptions);
