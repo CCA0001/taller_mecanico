@@ -171,6 +171,7 @@
 
     <script src="backend/buscarVehiculosPorCliente.js"></script>
     <script src="backend/buscarRepuestos.js"></script>.
+    <script src="backend/buscarServicios.js"></script>.
     <script src="backend/buscarCliente.js"></script>.
     <script src="backend/RecogerDatosOrden.js"></script>
     <script src="listaCircular.js"></script>
