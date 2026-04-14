@@ -1,8 +1,8 @@
 <?php
- $jsonRepuestos = file_get_contents("http://localhost/tecnomecanica/api/obtenerNombresRepuestos.php");
+ $jsonRepuestos = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresRepuestos.php");
     $repuestos = json_decode($jsonRepuestos, true);
 
-    $jsonServicios = file_get_contents("http://localhost/tecnomecanica/api/obtenerNombresServicios.php");
+    $jsonServicios = file_get_contents("http://localhost/TallerMecanica/api/obtenerNombresServicios.php");
     $servicios = json_decode($jsonServicios, true);
     
 ?>

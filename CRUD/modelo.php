@@ -3,7 +3,7 @@ class OrdenTrabajo {
     private $conn;
 
     public function __construct() {
-        include __DIR__ . "/../conexion.php"; 
+        include __DIR__ . "/../conexion/conexion.php"; 
         $this->conn = $conn;
     }
 
