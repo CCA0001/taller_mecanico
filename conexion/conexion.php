@@ -1,6 +1,6 @@
 <?php
 
-    $serverName = getenv("DB_SERVER"); // o IP del servidor
+    $serverName = getenv("DB_SERVER"); 
     $connectionOptions = [
         "Database" => getenv("DB_NAME"),
         "Uid" => getenv("DB_USER"),

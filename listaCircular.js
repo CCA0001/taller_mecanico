@@ -2,7 +2,7 @@ class Nodo {
     constructor(data) {
         this.data = data;
         this.next = null;
-        this.prev = null; // 🔥 doble enlace (mejor UX)
+        this.prev = null; 
     }
 }
 
