@@ -75,7 +75,6 @@ function mostrarOrden(){
         })
         .catch(err => console.error(err));
 
-    // 🔥 AUTO CARRUSEL (opcional)
     setInterval(() => {
         siguiente();
     }, 5000);
